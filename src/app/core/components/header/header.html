@@ -1,0 +1,61 @@
+<header class="app-header">
+    <div class="header-content">
+
+        <!-- Left Side: Logo & Burger Menu -->
+        <div class="header-left">
+            <!-- ... (código existente del lado izquierdo) ... -->
+            <div class="header-logo">
+                <a (click)="clickRedirect(paths.dashboard)">Admin<strong>Panel</strong></a>
+            </div>
+        </div>
+
+        <!-- Right Side: Actions & User Profile -->
+        <div class="header-right">
+            <div class="header-actions">
+                <button class="action-btn" aria-label="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+            </div>
+
+            <!-- User Profile becomes a dropdown trigger -->
+            <div
+                class="user-profile"
+                (click)="toggleProfileMenu()"
+                [class.is-active]="isProfileMenuOpen">
+
+                <span class="user-name">John Doe</span>
+                <div class="user-avatar">
+                    <span>JD</span>
+                </div>
+
+                <!-- THE NEW DROPDOWN MENU -->
+                <div class="profile-dropdown" [class.show]="isProfileMenuOpen">
+                    <ul class="dropdown-list">
+                        <li class="dropdown-item">
+                            <a (click)="clickRedirect(paths.profile)">
+                                <i class="fas fa-user-circle"></i>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a (click)="clickRedirect(paths.settings)">
+                                <i class="fas fa-cog"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a (click)="clickRedirect(paths.login)">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</header>

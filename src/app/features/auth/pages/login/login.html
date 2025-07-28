@@ -1,0 +1,32 @@
+<!-- El fondo que se verá a través del cristal -->
+<div class="background-gradient"></div>
+
+<!-- El contenedor principal del formulario -->
+<div class="login-container">
+    <div class="avatar-container">
+        <i class="fas fa-user"></i>
+    </div>
+
+    <form class="login-form" [formGroup]="loginForm">
+        <div class="input-group">
+            <i class="fas fa-envelope icon"></i>
+            <input maxlength="100" type="email" id="email" placeholder="Email ID" formControlName="username">
+        </div>
+
+        <div class="input-group">
+            <i class="fas fa-lock icon"></i>
+            <input minlength="6" maxlength="15" type="password" id="password" placeholder="Password" formControlName="password">
+        </div>
+
+        <div class="options-group">
+            <label class="remember-me">
+                <input type="checkbox" checked>
+                <i class="fas fa-check check-icon"></i>
+                Remember me
+            </label>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+        </div>
+
+        <button class="login-button" (click)="validateForm()">LOGIN</button>
+    </form>
+</div>

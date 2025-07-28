@@ -1,0 +1,141 @@
+@use 'sass:color';
+@use 'theme/variables' as v;
+
+$font-family: 'Poppins', sans-serif;
+
+$glass-bg: rgba(v.$white, 0.1);
+$glass-border: rgba(v.$white, 0.2);
+$glass-shadow: rgba(v.$black, 0.37);
+
+$text-on-dark: v.$text-inverse;
+$placeholder-color: rgba(v.$text-inverse, 0.7);
+
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: $font-family;
+    background: linear-gradient(135deg, v.$gray-900, color.adjust(v.$primary-color, $lightness: -15%));
+}
+
+.login-container {
+    width: 380px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-radius: 20px;
+    background: $glass-bg;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid $glass-border;
+    box-shadow: 0 8px 32px 0 $glass-shadow;
+}
+
+.avatar-container {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: rgba(v.$white, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 40px;
+    color: $placeholder-color;
+}
+
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+
+    .icon {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $placeholder-color;
+    }
+
+    input {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid $glass-border;
+        padding: 10px 0 10px 30px;
+        font-size: 16px;
+        color: $text-on-dark;
+        outline: none;
+        transition: border-color 0.3s ease;
+
+        &::placeholder {
+            color: $placeholder-color;
+            font-weight: 300;
+        }
+
+        &:focus {
+            border-bottom-color: $text-on-dark;
+        }
+    }
+}
+
+.options-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    width: 100%;
+
+    .remember-me {
+        display: flex;
+        align-items: center;
+        color: $placeholder-color;
+        cursor: pointer;
+
+        .check-icon {
+            border-color: $glass-border;
+        }
+
+        input[type="checkbox"]:checked + .check-icon {
+            color: $text-on-dark;
+            border-color: $text-on-dark;
+        }
+    }
+
+    .forgot-password {
+        color: $placeholder-color;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $text-on-dark;
+        }
+    }
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    color: v.$text-inverse;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(90deg, v.$primary-color, v.$primary-color-dark);
+
+    &:hover {
+        box-shadow: 0 4px 15px rgba(v.$black, 0.3);
+        background: linear-gradient(90deg, v.$primary-color-light, v.$primary-color);
+    }
+}

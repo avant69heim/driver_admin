@@ -1,0 +1,48 @@
+@use 'sass:color';
+@use 'variables' as v;
+
+$theme-colors: (
+    "primary": v.$primary-color,
+    "secondary": v.$secondary-color,
+    "accent": v.$accent-color,
+    "success": v.$success-color,
+    "warning": v.$warning-color,
+    "danger": v.$error-color,
+    "info": v.$info-color,
+    "light": v.$gray-100,
+    "medium": v.$gray-600,
+    "dark": v.$gray-900
+);
+
+:root {
+    @each $name, $color in $theme-colors {
+        --color-#{$name}: #{$color};
+        --color-#{$name}-rgb: #{color.channel($color, "red")}, #{color.channel($color, "green")}, #{color.channel($color, "blue")};
+        --color-#{$name}-shade: #{color.adjust($color, $lightness: -10%)};
+        --color-#{$name}-tint: #{color.adjust($color, $lightness: 10%)};
+
+        // --- THIS IS THE FINAL, CORRECTED LINE ---
+        $contrast-color: if(color.channel($color, "lightness", $space: hsl) > 50, v.$black, v.$white);
+
+        --color-#{$name}-contrast: #{$contrast-color};
+        --color-#{$name}-contrast-rgb: #{color.channel($contrast-color, "red")}, #{color.channel($contrast-color, "green")}, #{color.channel($contrast-color, "blue")};
+    }
+
+    --background-color: #{v.$app-bg};
+    --background-color-rgb: #{color.channel(v.$app-bg, "red")}, #{color.channel(v.$app-bg, "green")}, #{color.channel(v.$app-bg, "blue")};
+
+    --text-color: #{v.$text-primary};
+    --text-color-rgb: #{color.channel(v.$text-primary, "red")}, #{color.channel(v.$text-primary, "green")}, #{color.channel(v.$text-primary, "blue")};
+
+    --color-step-50:  #{v.$gray-100};
+    --color-step-100: #{v.$gray-200};
+    --color-step-200: #{color.adjust(v.$gray-200, $lightness: -5%)};
+    --color-step-300: #{v.$gray-400};
+    --color-step-400: #{color.adjust(v.$gray-400, $lightness: -5%)};
+    --color-step-500: #{v.$gray-600};
+    --color-step-600: #{color.adjust(v.$gray-600, $lightness: -5%)};
+    --color-step-700: #{v.$gray-800};
+    --color-step-800: #{color.adjust(v.$gray-800, $lightness: -5%)};
+    --color-step-900: #{v.$gray-900};
+    --color-step-950: #{color.adjust(v.$gray-900, $lightness: -5%)};
+}

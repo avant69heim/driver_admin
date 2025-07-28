@@ -1,0 +1,210 @@
+@use 'theme/variables' as v;
+
+// Main header container
+.app-header {
+    height: 65px;
+    width: 100%;
+
+    // --- CHANGE 1: Use the dark secondary color for the background ---
+    background-color: v.$secondary-color;
+    // Use a darker border for a subtle 3D effect on the dark background
+    border-bottom: 1px solid v.$gray-900;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+// The Flexbox wrapper that correctly organizes the 3 sections
+.header-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+
+// --- Left Section (Logo) ---
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-logo a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    // --- CHANGE 2: Invert text color for dark background ---
+    color: v.$text-inverse;
+
+    strong {
+        // The primary red color will pop against the dark background
+        color: v.$primary-color;
+        font-weight: 700;
+    }
+}
+
+// --- Right Section (Actions & Profile) ---
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.action-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    // --- CHANGE 4: Invert icon color and update hover effect ---
+    color: v.$text-inverse;
+    opacity: 0.8;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+        opacity: 1;
+        background-color: rgba(v.$white, 0.1); // Subtle hover effect
+    }
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.notification-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: v.$error-color;
+    color: v.$text-inverse;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 600;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // Use the header's color for the border to create a "cutout" effect
+    border: 1px solid v.$secondary-color;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.user-name {
+    font-weight: 500;
+    color: v.$text-inverse; // Inverted text color
+    white-space: nowrap;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: v.$primary-color;
+    color: v.$text-inverse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+// --- Profile Dropdown Menu Styles ---
+
+.user-profile {
+    // This is crucial for positioning the dropdown relative to the profile
+    position: relative;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: calc(100% + 10px); // Position it below the header with a 10px gap
+    right: 0;
+    width: 220px;
+    background-color: v.$surface-bg;
+    border-radius: 8px;
+    border: 1px solid v.$border-color;
+    box-shadow: 0 4px 12px rgba(v.$black, 0.1);
+    overflow: hidden;
+
+    // Animation & Visibility
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+
+    // Class to show the menu
+    &.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
+.dropdown-list {
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+}
+
+.dropdown-item a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: v.$text-primary;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+
+    i {
+        width: 18px; // Ensures icons are aligned
+        text-align: center;
+        color: v.$text-secondary;
+    }
+
+    &:hover {
+        background-color: v.$gray-100;
+    }
+}
+
+// Special styling for the Logout item
+.dropdown-item:last-child a {
+    color: v.$error-color;
+
+    i {
+        color: v.$error-color;
+    }
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: v.$border-color;
+    margin: 8px 0;
+}

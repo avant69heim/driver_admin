@@ -1,0 +1,47 @@
+@use 'sass:color';
+
+// Base Palette
+$red:     #E53935;
+$yellow:  #FDD835;
+$black:   #111111;
+$white:   #FFFFFF;
+$green:   #43A047;
+$blue:    #1E88E5;
+
+// Grayscale
+$gray-100: #F5F5F5;
+$gray-200: #EEEEEE;
+$gray-400: #BDBDBD;
+$gray-600: #757575;
+$gray-800: #424242;
+$gray-900: #212121;
+
+// Semantic / Theme Colors
+$primary-color: $red;
+$secondary-color: $gray-800;
+$accent-color: $yellow;
+
+// State Colors
+$success-color: $green;
+$warning-color: $yellow;
+$error-color: $red;
+$info-color: $blue;
+
+// Text Colors
+$text-primary: $gray-900;
+$text-secondary: $gray-600;
+$text-inverse: $white;
+$link-color: $primary-color;
+$text-error: $error-color;
+
+// Background & Surface Colors
+$app-bg: $gray-100;
+$surface-bg: $white;
+$border-color: $gray-200;
+
+// Color Variants
+$primary-color-light: color.adjust($primary-color, $lightness: 10%);
+$primary-color-dark: color.adjust($primary-color, $lightness: -10%);
+
+$accent-color-light: color.adjust($accent-color, $lightness: 10%);
+$accent-color-dark: color.adjust($accent-color, $lightness: -10%);

@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Import this to make CSS Custom Properties available globally
+@use 'theme/theme';
+
+// You can add other global styles here, for example:
+body {
+    font-family: 'Poppins', sans-serif; // Example font
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+}
