@@ -1,0 +1,58 @@
+@use 'theme/variables' as v;
+
+.side-menu {
+    width: 240px;
+    height: calc(100vh - 65px); // Full height minus the header's height
+    position: fixed;
+    top: 65px; // Positioned right below the header
+    left: 0;
+    background-color: v.$secondary-color;
+    border-right: 1px solid v.$gray-900;
+    padding-top: 20px;
+    z-index: 999;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item a {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    text-decoration: none;
+    color: rgba(v.$white, 0.7); // Slightly transparent for inactive state
+    transition: all 0.2s ease-in-out;
+    border-left: 3px solid transparent; // Placeholder for the active indicator
+}
+
+.menu-icon {
+    width: 24px;
+    margin-right: 16px;
+    font-size: 16px;
+}
+
+.menu-name {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+// --- States: Hover & Active ---
+
+.menu-item a:hover {
+    background-color: rgba(v.$white, 0.05);
+    color: v.$white;
+}
+
+// Styles for the currently active route link
+.menu-item a.is-active {
+    background-color: rgba(v.$primary-color, 0.1);
+    color: v.$white;
+    border-left-color: v.$primary-color; // Highlight with the brand color
+
+    .menu-icon {
+        color: v.$primary-color; // Make the icon pop
+    }
+}

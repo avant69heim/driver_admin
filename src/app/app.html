@@ -1,6 +1,10 @@
-@if (showHeader()) {
-    <app-header></app-header>
-}
-<main>
-    <router-outlet></router-outlet>
-</main>
+<div class="app-layout">
+    @if (showHeader()) {
+        <app-header></app-header>
+        <app-menu></app-menu>
+    }
+    <main [className]="{'main-content': !showHeader()}">
+        <router-outlet></router-outlet>
+    </main>
+</div>
+
