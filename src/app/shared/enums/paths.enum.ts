@@ -4,5 +4,5 @@ export enum PathsEnum {
     profile = '/profile',
     settings = '/settings',
     dashboard = '/dashboard',
-    userList = '/user-list',
+    users = '/users',
 }

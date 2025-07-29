@@ -1,15 +1,10 @@
 @use 'theme/variables' as v;
 
-// Main header container
 .app-header {
     height: 65px;
     width: 100%;
-
-    // --- CHANGE 1: Use the dark secondary color for the background ---
     background-color: v.$secondary-color;
-    // Use a darker border for a subtle 3D effect on the dark background
     border-bottom: 1px solid v.$gray-900;
-
     position: fixed;
     top: 0;
     left: 0;
@@ -19,7 +14,6 @@
     align-items: center;
 }
 
-// The Flexbox wrapper that correctly organizes the 3 sections
 .header-content {
     width: 100%;
     display: flex;
@@ -28,8 +22,6 @@
     padding: 0 24px;
 }
 
-
-// --- Left Section (Logo) ---
 .header-left {
     display: flex;
     align-items: center;
@@ -40,17 +32,14 @@
     text-decoration: none;
     font-size: 20px;
     font-weight: 600;
-    // --- CHANGE 2: Invert text color for dark background ---
     color: v.$text-inverse;
-
+    cursor: pointer;
     strong {
-        // The primary red color will pop against the dark background
         color: v.$primary-color;
         font-weight: 700;
     }
 }
 
-// --- Right Section (Actions & Profile) ---
 .header-right {
     display: flex;
     align-items: center;
@@ -68,7 +57,6 @@
     border: none;
     cursor: pointer;
     font-size: 18px;
-    // --- CHANGE 4: Invert icon color and update hover effect ---
     color: v.$text-inverse;
     opacity: 0.8;
     width: 40px;
@@ -82,7 +70,7 @@
 
     &:hover {
         opacity: 1;
-        background-color: rgba(v.$white, 0.1); // Subtle hover effect
+        background-color: rgba(v.$white, 0.1);
     }
 }
 
@@ -104,7 +92,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // Use the header's color for the border to create a "cutout" effect
     border: 1px solid v.$secondary-color;
 }
 
@@ -113,11 +100,12 @@
     align-items: center;
     gap: 12px;
     cursor: pointer;
+    position: relative;
 }
 
 .user-name {
     font-weight: 500;
-    color: v.$text-inverse; // Inverted text color
+    color: v.$text-inverse;
     white-space: nowrap;
 }
 
@@ -135,16 +123,9 @@
     flex-shrink: 0;
 }
 
-// --- Profile Dropdown Menu Styles ---
-
-.user-profile {
-    // This is crucial for positioning the dropdown relative to the profile
-    position: relative;
-}
-
 .profile-dropdown {
     position: absolute;
-    top: calc(100% + 10px); // Position it below the header with a 10px gap
+    top: calc(100% + 10px);
     right: 0;
     width: 220px;
     background-color: v.$surface-bg;
@@ -152,14 +133,11 @@
     border: 1px solid v.$border-color;
     box-shadow: 0 4px 12px rgba(v.$black, 0.1);
     overflow: hidden;
-
-    // Animation & Visibility
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
 
-    // Class to show the menu
     &.show {
         opacity: 1;
         transform: translateY(0);
@@ -184,7 +162,7 @@
     transition: background-color 0.2s ease;
 
     i {
-        width: 18px; // Ensures icons are aligned
+        width: 18px;
         text-align: center;
         color: v.$text-secondary;
     }
@@ -194,10 +172,8 @@
     }
 }
 
-// Special styling for the Logout item
 .dropdown-item:last-child a {
     color: v.$error-color;
-
     i {
         color: v.$error-color;
     }
@@ -207,4 +183,20 @@
     height: 1px;
     background-color: v.$border-color;
     margin: 8px 0;
+}
+
+@media (max-width: 992px) {
+    .menu-toggle {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .user-name {
+        display: none;
+    }
+
+    .header-content {
+        padding: 0 16px;
+    }
 }

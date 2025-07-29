@@ -1,9 +1,16 @@
 <div class="app-layout">
     @if (showHeader()) {
-        <app-header></app-header>
-        <app-menu></app-menu>
+        <app-header (menuToggle)="toggleMobileMenu()"></app-header>
+        <app-menu [isMobileMenuOpen]="isMobileMenuOpen"></app-menu>
+
+        <div
+            class="mobile-menu-overlay"
+            [class.show]="isMobileMenuOpen"
+            (click)="toggleMobileMenu()">
+        </div>
     }
-    <main [className]="{'main-content': !showHeader()}">
+
+    <main [ngClass]="{'main-content': showHeader(), 'full-width-content': !showHeader()}">
         <router-outlet></router-outlet>
     </main>
 </div>

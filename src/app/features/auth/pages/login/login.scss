@@ -12,11 +12,34 @@ $placeholder-color: rgba(v.$text-inverse, 0.7);
 
 :host {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     font-family: $font-family;
     background: linear-gradient(135deg, v.$gray-900, color.adjust(v.$primary-color, $lightness: -15%));
+}
+
+.page-title-container {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-title {
+    font-family: $font-family;
+    color: v.$text-inverse;
+    font-size: 3rem;
+    letter-spacing: -1px;
+    margin: 0;
+
+    span {
+        font-weight: 300;
+    }
+
+    strong {
+        font-weight: 700;
+        margin-left: 8px;
+    }
 }
 
 .login-container {
@@ -137,5 +160,32 @@ $placeholder-color: rgba(v.$text-inverse, 0.7);
     &:hover {
         box-shadow: 0 4px 15px rgba(v.$black, 0.3);
         background: linear-gradient(90deg, v.$primary-color-light, v.$primary-color);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.25rem;
+    }
+    .page-title-container {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 420px) {
+    :host {
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .login-container {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .options-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
     }
 }

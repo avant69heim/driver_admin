@@ -1,4 +1,4 @@
-<aside class="side-menu">
+<aside class="side-menu" [class.is-open]="isMobileMenuOpen">
     <nav class="menu-nav">
         <ul class="menu-list">
             @for (item of menuItems; track item.name) {

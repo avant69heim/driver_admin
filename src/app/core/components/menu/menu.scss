@@ -1,15 +1,17 @@
+@use 'sass:color';
 @use 'theme/variables' as v;
 
 .side-menu {
     width: 240px;
-    height: calc(100vh - 65px); // Full height minus the header's height
+    height: calc(100vh - 65px);
     position: fixed;
-    top: 65px; // Positioned right below the header
+    top: 65px;
     left: 0;
-    background-color: v.$secondary-color;
-    border-right: 1px solid v.$gray-900;
+    background: linear-gradient(180deg, v.$gray-900, color.adjust(v.$primary-color, $lightness: -20%));
+    border-right: 1px solid v.$black;
     padding-top: 20px;
     z-index: 999;
+    transition: transform 0.3s ease-in-out;
 }
 
 .menu-list {
@@ -23,9 +25,9 @@
     align-items: center;
     padding: 12px 24px;
     text-decoration: none;
-    color: rgba(v.$white, 0.7); // Slightly transparent for inactive state
+    color: rgba(v.$white, 0.7);
     transition: all 0.2s ease-in-out;
-    border-left: 3px solid transparent; // Placeholder for the active indicator
+    border-left: 3px solid transparent;
 }
 
 .menu-icon {
@@ -39,20 +41,28 @@
     font-size: 15px;
 }
 
-// --- States: Hover & Active ---
-
 .menu-item a:hover {
     background-color: rgba(v.$white, 0.05);
     color: v.$white;
 }
 
-// Styles for the currently active route link
 .menu-item a.is-active {
-    background-color: rgba(v.$primary-color, 0.1);
+    background-color: rgba(v.$primary-color, 0.15);
     color: v.$white;
-    border-left-color: v.$primary-color; // Highlight with the brand color
+    border-left-color: v.$primary-color;
 
     .menu-icon {
-        color: v.$primary-color; // Make the icon pop
+        color: v.$primary-color;
+    }
+}
+
+@media (max-width: 992px) {
+    .side-menu {
+        transform: translateX(-100%);
+        z-index: 1001;
+
+        &.is-open {
+            transform: translateX(0);
+        }
     }
 }
